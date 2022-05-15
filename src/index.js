@@ -32,7 +32,19 @@ practiceTab.addEventListener('click', () => {
 
 
 // Factory function for goals
+// Needs title, description, dueDate, type (daily, short term, long-term), time (if daily)
 
+const dailyGoal = (title, description, type='daily', time) => {
+    return {title, type, time};
+};
+
+const shortTermGoal = (title, description, type='short term', dueDate) => {
+    return {title, description, type, dueDate};
+};
+
+const longTermGoal = (title, description, type='long term') => {
+    return {title, description, type};
+};
 
 
 
