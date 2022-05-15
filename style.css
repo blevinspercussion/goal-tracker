@@ -41,7 +41,7 @@
 }
 
 .tab:hover {
-
+    cursor: pointer;
 }
 
 .main-content {
@@ -69,4 +69,11 @@
 .days-list-item {
     font-size: 30px;
     margin: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.days-list-item:hover {
+    font-size: 31px;
+    transition: 0.3s;
 }
