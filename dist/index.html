@@ -1,28 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lobster&family=Radio+Canada&family=Water+Brush&display=swap"
+      rel="stylesheet"
+    />
     <title>Goal Tracker</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="content">
-
-        <div class="header"><h1>Goal Tracker</h1>
+      <div class="header">
+        <h1>Goal Tracker</h1>
         <div class="tabs">
-            <div class="tab"><p>Practice Goals</p></div>
-            <div class="tab"><p>Short Term Goals</p></div>
-            <div class="tab"><p>Long Term Goals</p></div>
+          <div class="tab" id="practice-tab"><p>Daily Practice</p></div>
+          <div class="tab" id="short-term-tab"><p>Short Term Goals</p></div>
+          <div class="tab" id="long-term-tab"><p>Long Term Goals</p></div>
         </div>
-    </div>
-        <div class="main-content"><h1>Main Content</h1></div>
-        <div class="sidebar"><h1>Sidebar</h1></div>
+      </div>
+      <div class="main-content">
+        <div class="welcome">
+          <p>Welcome to the Goal Tracker!</p>
+          <br />
 
+          <p>
+            This app will help you to keep track of your personal goals. Use the
+            tabs above to navigate between your short term and long term goals,
+            as well as your daily practice routine. While using the 'daily
+            practice' tab, you can select the day of the week at the side of the
+            screen. Be sure to mark off each goal as in is completed.
+          </p>
+          <br />
+          <p>
+            You can also mark off your short term and long term goals as you
+            complete them, under their respective tabs. Remember that short term
+            goals are achievement that should take weeks or maybe even months to
+            complete, and they should be supported by your daily practice. Each
+            one of your practice goals should help you work toward complete your
+            short term goals.
+          </p>
+          <br />
+          <p>
+            Long term goals are achievements that can take months or maybe even
+            years to complete, and are huge accomplishments that mark a turning
+            point in your journey...a 'levelling up' so to speak. These goals
+            should be celebrated!
+          </p>
+        </div>
+      </div>
+      <div class="sidebar"></div>
     </div>
-
 
     <script src="./main.js"></script>
-</body>
+  </body>
 </html>

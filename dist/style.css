@@ -1,9 +1,16 @@
+:root {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    --main-bg-color: #1a1a1d;
+    --hilight-color: #c3073f;
+    --main-text-color: white;
+}
+
 .content {
     display: grid;
-    grid-template-columns: 150px 5fr;
-    grid-template-rows: 250 5fr;
-    background-color: #373e98;
-    color: white;
+    grid-template-columns: 250px 5fr;
+    grid-template-rows: 250px 100vh;
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
 }
 
 .header {
@@ -11,12 +18,15 @@
     flex-direction: column;
     grid-column: 2 / 3;
     grid-row: 1 / 2;
-    border-bottom: 2px solid #f16775;
+    font-family: 'Lobster', cursive;
+    border-bottom: 2px solid var(--hilight-color);
+    font-size: 35px;
 }
 
 .tabs {
     display: flex;
     flex-direction: row;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .tab {
@@ -24,9 +34,9 @@
     margin-right: 10px;
     padding-left: 5px;
     padding-right: 5px;
-    border-left: 1px solid #f16775;
-    border-right: 1px solid #f16775;
-    border-top: 1px solid #f16775;
+    border-left: 1px solid var(--hilight-color);
+    border-right: 1px solid var(--hilight-color);
+    border-top: 1px solid var(--hilight-color);
     font-size: medium;
 }
 
@@ -43,5 +53,11 @@
 .sidebar {
     grid-column: 1 / 2;
     grid-row: 2 / 3;
-    border-right: 2px solid #f16775;
+    border-top: 2px solid var(--hilight-color);
+    border-right: 2px solid var(--hilight-color);
+}
+
+.welcome {
+    font-size: larger;
+    width: 35vw;
 }
