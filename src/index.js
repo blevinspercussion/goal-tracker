@@ -9,7 +9,26 @@ const mainContent = document.querySelector('.main-content');
 
 
 //Event listeners
+practiceTab.addEventListener('click', () => {
+    const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+    const daysDiv = document.createElement('div');
+    const daysList = document.createElement('ul');
 
+    daysDiv.setAttribute('id', 'days-div');
+    daysList.setAttribute('id', 'days-list');
+
+    sidebar.appendChild(daysDiv);
+    daysDiv.appendChild(daysList);
+
+    for (let day in days) {
+        let dayItem = document.createElement('li');
+        dayItem.textContent = `${days[day]}`;
+        dayItem.classList.add('days-list-item');
+        daysList.appendChild(dayItem);
+    }
+
+
+});
 
 
 // Factory function for goals

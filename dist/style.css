@@ -61,3 +61,12 @@
     font-size: larger;
     width: 35vw;
 }
+
+#days-list {
+    list-style: none;
+}
+
+.days-list-item {
+    font-size: 30px;
+    margin: 10px;
+}
