@@ -84,34 +84,73 @@ const dailyPractice = (() => {
         let addPracticeForm = document.createElement('form');
         let titleLabel = document.createElement('label');
         let titleField = document.createElement('input');
+        let typeLabel = document.createElement('label')
+        let typeField = document.createElement('select');
+        let optionWarmup = document.createElement('option');
+        let optionTechnique = document.createElement('option');
+        let optionReading = document.createElement('option');
+        let optionRepertoire = document.createElement('option');
+        let optionOther = document.createElement('option');
         let descriptionLabel = document.createElement('label');
         let descriptionField = document.createElement('input');
         let timeLabel = document.createElement('label');
         let timeField = document.createElement('input');
-        let addButton = document.createElement('button');
+        let submitPracticeButton = document.createElement('button');
 
+        addPracticeFormHead.textContent = 'Add New Practice';
         titleLabel.textContent = 'Title';
+        typeLabel.textContent = 'Type';
         descriptionLabel.textContent = 'Description';
         timeLabel.textContent = 'Time (in minutes)';
-        addButton.textContent = 'Add Practice';
+        submitPracticeButton.textContent = 'Add Practice';
+
+        optionWarmup.textContent = 'Warmup';
+        optionTechnique.textContent = 'Technique';
+        optionReading.textContent = 'Reading';
+        optionRepertoire.textContent = 'Repertoire';
+        optionOther.textContent = 'Other';
 
         titleField.setAttribute('type', 'text');
+        optionWarmup.setAttribute('value', 'Warmup');
+        optionTechnique.setAttribute('value', 'Technique');
+        optionReading.setAttribute('value', 'Reading');
+        optionRepertoire.setAttribute('value', 'Repertoire');
+        optionOther.setAttribute('value', 'Other');
         descriptionField.setAttribute('type', 'text');
         descriptionField.setAttribute('rows', '10');
         descriptionField.setAttribute('cols', '20');
         timeField.setAttribute('type', 'number');
 
+        mainContent.appendChild(addPracticeFormHead);
         mainContent.appendChild(addPracticeForm);
         addPracticeForm.appendChild(titleLabel);
         addPracticeForm.appendChild(titleField);
+        addPracticeForm.appendChild(typeLabel);
+        addPracticeForm.appendChild(typeField);
+        typeField.appendChild(optionWarmup);
+        typeField.appendChild(optionTechnique);
+        typeField.appendChild(optionReading);
+        typeField.appendChild(optionRepertoire);
+        typeField.appendChild(optionOther);
         addPracticeForm.appendChild(descriptionLabel);
         addPracticeForm.appendChild(descriptionField);
         addPracticeForm.appendChild(timeLabel);
         addPracticeForm.appendChild(timeField);
-        addPracticeForm.appendChild(addButton);
+        addPracticeForm.appendChild(submitPracticeButton);
 
+        submitPracticeButton.addEventListener('click', () => {
+            
+            let practice = new dailyGoal (
+                titleField.value,
+                descriptionField.value,
+                timeField.value
+            );
+
+
+        });
 
     });
+
 
     
 

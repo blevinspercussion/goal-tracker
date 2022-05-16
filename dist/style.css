@@ -104,3 +104,8 @@ input {
 label {
     font-size: 25px;
 }
+
+select {
+    margin: 15px;
+    font-size: 25px;
+}
