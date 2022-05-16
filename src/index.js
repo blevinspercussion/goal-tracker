@@ -19,55 +19,62 @@ function clearSidebar() {
     };
 };
 
+// Set up event listeners for tabs
+const tabEventListeners = (() => {
+
+    practiceTab.addEventListener('click', () => {
+
+        clearMainContent();
+        clearSidebar();
+
+        const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+        const daysDiv = document.createElement('div');
+        const daysList = document.createElement('ul');
+        const daysWelcomeDiv = document.createElement('div');
+        const daysWelcomeText = document.createElement('p');
+        const addPracticeButton = document.createElement('button');
 
 
-//Event listeners
-practiceTab.addEventListener('click', () => {
+        daysDiv.setAttribute('id', 'days-div');
+        daysList.setAttribute('id', 'days-list');
+        daysWelcomeDiv.classList.add('welcome');
+        addPracticeButton.setAttribute('id', 'add-practice-button');
+        
+        sidebar.appendChild(daysDiv);
+        daysDiv.appendChild(daysList);
+        sidebar.appendChild(addPracticeButton);
 
-    clearMainContent();
-    clearSidebar();
-
-    const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-    const daysDiv = document.createElement('div');
-    const daysList = document.createElement('ul');
-    const daysWelcomeDiv = document.createElement('div');
-    const daysWelcomeText = document.createElement('p');
-    const addPracticeButton = document.createElement('button');
-
-
-    daysDiv.setAttribute('id', 'days-div');
-    daysList.setAttribute('id', 'days-list');
-    daysWelcomeDiv.classList.add('welcome');
-    
-    sidebar.appendChild(daysDiv);
-    daysDiv.appendChild(daysList);
-    sidebar.appendChild(addPracticeButton);
-
-    mainContent.appendChild(daysWelcomeDiv);
-    daysWelcomeDiv.appendChild(daysWelcomeText);
+        mainContent.appendChild(daysWelcomeDiv);
+        daysWelcomeDiv.appendChild(daysWelcomeText);
 
 
-    daysWelcomeText.textContent = 'Click on a day at the left to view your practice goals for that day.';
-    addPracticeButton.textContent = 'Add Practice';
+        daysWelcomeText.textContent = 'Click on a day at the left to view your practice goals for that day.';
+        addPracticeButton.textContent = 'Add Practice';
 
-    for (let day in days) {
-        let dayItem = document.createElement('li');
-        dayItem.textContent = `${days[day]}`;
-        dayItem.classList.add('days-list-item');
-        daysList.appendChild(dayItem);
+        for (let day in days) {
+            let dayItem = document.createElement('li');
+            dayItem.textContent = `${days[day]}`;
+            dayItem.classList.add('days-list-item');
+            daysList.appendChild(dayItem);
 
+        };
+    });
+});
 
-    }
+// Daily Practice Module
+const dailyPractice = (() => {
 
 });
 
 
-// Factory function for goals
-// Needs title, description, dueDate, type (daily, short term, long-term), time (if daily)
+// TODO Short term goals module 
 
-const dailyGoal = (title, description, type='daily', time) => {
-    return {title, type, time};
-};
+
+
+// TODO Long term goals module
+
+
+
 
 const shortTermGoal = (title, description, type='short term', dueDate) => {
     return {title, description, type, dueDate};
@@ -79,5 +86,7 @@ const longTermGoal = (title, description, type='long term') => {
 
 
 
-// Function for Daily Practice 
 
+// Add event listeners 
+
+tabEventListeners();
