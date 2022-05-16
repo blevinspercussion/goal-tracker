@@ -55,6 +55,7 @@ const tabEventListeners = (() => {
             let dayItem = document.createElement('li');
             dayItem.textContent = `${days[day]}`;
             dayItem.classList.add('days-list-item');
+            dayItem.setAttribute('id', dayItem.textContent);
             daysList.appendChild(dayItem);
 
         };
@@ -110,6 +111,7 @@ const dailyPractice = (() => {
         optionRepertoire.textContent = 'Repertoire';
         optionOther.textContent = 'Other';
 
+        addPracticeForm.setAttribute('onsubmit', 'return false'); // Prevents page from reloading
         titleField.setAttribute('type', 'text');
         optionWarmup.setAttribute('value', 'Warmup');
         optionTechnique.setAttribute('value', 'Technique');
@@ -145,14 +147,13 @@ const dailyPractice = (() => {
                 descriptionField.value,
                 timeField.value
             );
-
-
+            console.log(practice);
+            return { practice };
         });
 
     });
 
 
-    
 
 });
 
