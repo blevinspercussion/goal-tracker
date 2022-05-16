@@ -69,14 +69,13 @@ const tabEventListeners = (() => {
 // Daily Practice Module
 const dailyPractice = (() => {
 
-    const dailyGoal = (title, description, type='daily', time) => {
-        return {title, description, type, time};
+    // Daily Goal factory function
+    const dailyGoal = (title, description, time) => {
+        return {title, description, time};
     }
 
     const addPracticeButton = document.getElementById('add-practice-button');
     let days = document.querySelectorAll('.days-list-item');
-
-    
 
     addPracticeButton.addEventListener('click', () => {
         clearMainContent();
@@ -103,7 +102,7 @@ const dailyPractice = (() => {
         typeLabel.textContent = 'Type';
         descriptionLabel.textContent = 'Description';
         timeLabel.textContent = 'Time (in minutes)';
-        submitPracticeButton.textContent = 'Add Practice';
+        submitPracticeButton.textContent = 'Submit';
 
         optionWarmup.textContent = 'Warmup';
         optionTechnique.textContent = 'Technique';
@@ -140,20 +139,20 @@ const dailyPractice = (() => {
         addPracticeForm.appendChild(timeField);
         addPracticeForm.appendChild(submitPracticeButton);
 
+
         submitPracticeButton.addEventListener('click', () => {
-            
-            let practice = new dailyGoal (
-                titleField.value,
-                descriptionField.value,
-                timeField.value
-            );
-            console.log(practice);
-            return { practice };
+            practice = dailyGoal(titleField.value, descriptionField.value, timeField.value);
+            console.log(dailyPractice);
         });
 
+
+        return {submitPracticeButton};
+        
+        
+
     });
-
-
+    
+    
 
 });
 
