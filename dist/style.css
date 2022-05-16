@@ -3,6 +3,7 @@
     --main-bg-color: #1a1a1d;
     --hilight-color: #c3073f;
     --main-text-color: white;
+    --button-color: #4e4e50;
 }
 
 .content {
@@ -76,4 +77,13 @@
 .days-list-item:hover {
     font-size: 31px;
     transition: 0.3s;
+}
+
+button {
+    height: 50px;
+    font-size: 25px;
+    margin: 35px;
+    border-radius: 10px;
+    background-color: var(--button-color);
+    color: white;
 }
