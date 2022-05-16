@@ -6,6 +6,10 @@ const longTermTab = document.getElementById('long-term-tab');
 const sidebar = document.querySelector('.sidebar');
 const mainContent = document.querySelector('.main-content');
 
+let dailyGoals = [];
+let shortTermGoals = [];
+let longTermGoals = [];
+
 // Global functions
 function clearMainContent() {
     while (mainContent.firstChild) {
@@ -70,8 +74,8 @@ const tabEventListeners = (() => {
 const dailyPractice = (() => {
 
     // Daily Goal factory function
-    const dailyGoal = (title, description, time) => {
-        return {title, description, time};
+    const dailyGoal = (title, type, description, time) => {
+        return {title, type, description, time};
     }
 
     const addPracticeButton = document.getElementById('add-practice-button');
@@ -141,8 +145,10 @@ const dailyPractice = (() => {
 
 
         submitPracticeButton.addEventListener('click', () => {
-            practice = dailyGoal(titleField.value, descriptionField.value, timeField.value);
-            console.log(dailyPractice);
+            practice = dailyGoal(titleField.value, typeField.value, descriptionField.value, timeField.value);
+            addPracticeForm.reset();
+            dailyGoals.push(practice);
+            console.log(dailyGoals);
         });
 
 
