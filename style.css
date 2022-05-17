@@ -9,7 +9,7 @@
 .content {
     display: grid;
     grid-template-columns: 250px 5fr;
-    grid-template-rows: 250px 100vh;
+    grid-template-rows: 250px 5fr;
     background-color: var(--main-bg-color);
     color: var(--main-text-color);
 }
