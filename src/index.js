@@ -10,18 +10,45 @@ let dailyGoals = [];
 let shortTermGoals = [];
 let longTermGoals = [];
 
-// Global functions
-function clearMainContent() {
-    while (mainContent.firstChild) {
-        mainContent.removeChild(mainContent.firstChild);
-    };
+// Goal factory functions
+
+const dailyGoal = (title, type, description, time) => {
+    return {title, type, description, time};
+}
+
+const shortTermGoal = (title, description, type='short term', dueDate) => {
+    return {title, description, type, dueDate};
 };
 
-function clearSidebar() {
-    while (sidebar.firstChild) {
-        sidebar.removeChild(sidebar.firstChild);
-    };
+const longTermGoal = (title, description, type='long term') => {
+    return {title, description, type};
 };
+
+
+// Display controller, handles function for displaying
+// and clearing content to/from the screen
+const displayController = () => {
+
+    function clearMainContent() {
+        while (mainContent.firstChild) {
+            mainContent.removeChild(mainContent.firstChild);
+        };
+    };
+    
+    function clearSidebar() {
+        while (sidebar.firstChild) {
+            sidebar.removeChild(sidebar.firstChild);
+        };
+    };
+
+    return { clearMainContent, clearSidebar };
+
+};
+
+
+// Global functions
+
+
 
 // Set up event listeners for tabs
 const tabEventListeners = (() => {
@@ -73,10 +100,7 @@ const tabEventListeners = (() => {
 // Daily Practice Module
 const dailyPractice = (() => {
 
-    // Daily Goal factory function
-    const dailyGoal = (title, type, description, time) => {
-        return {title, type, description, time};
-    }
+    
 
     const addPracticeButton = document.getElementById('add-practice-button');
     let days = document.querySelectorAll('.days-list-item');
@@ -343,17 +367,6 @@ const dailyPractice = (() => {
 
 
 // TODO Long term goals module
-
-
-
-
-const shortTermGoal = (title, description, type='short term', dueDate) => {
-    return {title, description, type, dueDate};
-};
-
-const longTermGoal = (title, description, type='long term') => {
-    return {title, description, type};
-};
 
 
 
