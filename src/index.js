@@ -81,6 +81,11 @@ const dailyPractice = (() => {
     const addPracticeButton = document.getElementById('add-practice-button');
     let days = document.querySelectorAll('.days-list-item');
 
+    // TODO Fills in details on practice screen
+
+
+
+
     addPracticeButton.addEventListener('click', () => {
         clearMainContent();
 
@@ -204,11 +209,13 @@ const dailyPractice = (() => {
             repertoireHeader.appendChild(repertoireList);
             otherHeader.appendChild(otherList);
 
+            
             for (let goal in dailyGoals) {
                 if (dailyGoals[goal].type === 'Warmup') {
                     let title = document.createElement('ul');
                     let description = document.createElement('li');
                     let time = document.createElement('li');
+                    let removePracticeButton = document.createElement('button');
 
                     title.classList.add('practice-title');
                     description.classList.add('practice-list-item');
@@ -217,10 +224,111 @@ const dailyPractice = (() => {
                     title.textContent = dailyGoals[goal].title;
                     description.textContent = `Notes: ${dailyGoals[goal].description}`;
                     time.textContent = `Time: ${dailyGoals[goal].time} minutes`;
+                    removePracticeButton.textContent = 'Remove This Practice Item';
 
                     warmupList.append(title);
                     title.append(description);
                     title.append(time);
+                    warmupList.appendChild(removePracticeButton);
+
+                    removePracticeButton.addEventListener('click', () => {
+                        dailyGoals.splice(goal, 1);
+                    });
+
+                } else if (dailyGoals[goal].type === 'Technique') {
+                    let title = document.createElement('ul');
+                    let description = document.createElement('li');
+                    let time = document.createElement('li');
+                    let removePracticeButton = document.createElement('button');
+
+                    title.classList.add('practice-title');
+                    description.classList.add('practice-list-item');
+                    time.classList.add('practice-list-item');
+                    removePracticeButton.textContent = 'Remove This Practice Item';
+
+                    title.textContent = dailyGoals[goal].title;
+                    description.textContent = `Notes: ${dailyGoals[goal].description}`;
+                    time.textContent = `Time: ${dailyGoals[goal].time} minutes`;
+
+                    techniqueList.append(title);
+                    title.append(description);
+                    title.append(time);
+                    techniqueList.appendChild(removePracticeButton);
+
+                    removePracticeButton.addEventListener('click', () => {
+                        dailyGoals.splice(goal, 1);
+                    });
+                    
+                } else if (dailyGoals[goal].type === 'Reading') {
+                    let title = document.createElement('ul');
+                    let description = document.createElement('li');
+                    let time = document.createElement('li');
+                    let removePracticeButton = document.createElement('button');
+
+                    title.classList.add('practice-title');
+                    description.classList.add('practice-list-item');
+                    time.classList.add('practice-list-item');removePracticeButton.textContent = 'Remove This Practice Item';
+
+                    title.textContent = dailyGoals[goal].title;
+                    description.textContent = `Notes: ${dailyGoals[goal].description}`;
+                    time.textContent = `Time: ${dailyGoals[goal].time} minutes`;
+
+                    readingList.append(title);
+                    title.append(description);
+                    title.append(time);
+                    readingList.appendChild(removePracticeButton);
+
+                    removePracticeButton.addEventListener('click', () => {
+                        dailyGoals.splice(goal, 1);
+                    });
+
+                } else if (dailyGoals[goal].type === 'Repertoire') {
+                    let title = document.createElement('ul');
+                    let description = document.createElement('li');
+                    let time = document.createElement('li');
+                    let removePracticeButton = document.createElement('button');
+
+                    title.classList.add('practice-title');
+                    description.classList.add('practice-list-item');
+                    time.classList.add('practice-list-item');
+                    removePracticeButton.textContent = 'Remove This Practice Item';
+
+                    title.textContent = dailyGoals[goal].title;
+                    description.textContent = `Notes: ${dailyGoals[goal].description}`;
+                    time.textContent = `Time: ${dailyGoals[goal].time} minutes`;
+
+                    repertoireList.append(title);
+                    title.append(description);
+                    title.append(time);
+                    repertoireList.appendChild(removePracticeButton);
+
+                    removePracticeButton.addEventListener('click', () => {
+                        dailyGoals.splice(goal, 1);
+                    });
+
+                } else if (dailyGoals[goal].type === 'Other') {
+                    let title = document.createElement('ul');
+                    let description = document.createElement('li');
+                    let time = document.createElement('li');
+                    let removePracticeButton = document.createElement('button');
+
+                    title.classList.add('practice-title');
+                    description.classList.add('practice-list-item');
+                    time.classList.add('practice-list-item');
+                    removePracticeButton.textContent = 'Remove This Practice Item';
+
+                    title.textContent = dailyGoals[goal].title;
+                    description.textContent = `Notes: ${dailyGoals[goal].description}`;
+                    time.textContent = `Time: ${dailyGoals[goal].time} minutes`;
+
+                    otherList.append(title);
+                    title.append(description);
+                    title.append(time);
+                    otherList.appendChild(removePracticeButton);
+
+                    removePracticeButton.addEventListener('click', () => {
+                        dailyGoals.splice(goal, 1);
+                    });
                 };
             };
 
