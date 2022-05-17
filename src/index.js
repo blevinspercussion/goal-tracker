@@ -153,12 +153,79 @@ const dailyPractice = (() => {
 
 
         return {submitPracticeButton};
-        
-        
-
     });
     
-    
+    days.forEach(day => {
+        day.addEventListener('click', () => {
+            let dayText = day.textContent;
+            clearMainContent();
+
+            const warmupHeader = document.createElement('h1');
+            const techniqueHeader = document.createElement('h1');
+            const readingHeader = document.createElement('h1');
+            const repertoireHeader = document.createElement('h1');
+            const otherHeader = document.createElement('h1');
+
+            const warmupList = document.createElement('ul');
+            const techniqueList = document.createElement('ul');
+            const readingList = document.createElement('ul');
+            const repertoireList = document.createElement('ul');
+            const otherList = document.createElement('ul');
+
+            warmupList.classList.add('practice-list');
+            techniqueList.classList.add('practice-list');
+            readingList.classList.add('practice-list');
+            repertoireList.classList.add('practice-list');
+            otherList.classList.add('practice-list');
+
+            warmupList.setAttribute('id', 'Warmup');
+            techniqueList.setAttribute('id', 'Technique');
+            readingList.setAttribute('id', 'Reading');
+            repertoireList.setAttribute('id', 'Repertoire');
+            otherList.setAttribute('id', 'Other');
+
+            
+            warmupHeader.textContent = 'Warmup';
+            techniqueHeader.textContent = 'Technique';
+            readingHeader.textContent = 'Reading';
+            repertoireHeader.textContent = 'Repertoire';
+            otherHeader.textContent = 'Other';
+            
+
+            mainContent.appendChild(warmupHeader);
+            mainContent.appendChild(techniqueHeader);
+            mainContent.appendChild(readingHeader);
+            mainContent.appendChild(repertoireHeader);
+            mainContent.appendChild(otherHeader);
+
+            warmupHeader.appendChild(warmupList);
+            techniqueHeader.appendChild(techniqueList);
+            readingHeader.appendChild(readingList);
+            repertoireHeader.appendChild(repertoireList);
+            otherHeader.appendChild(otherList);
+
+            for (let goal in dailyGoals) {
+                if (dailyGoals[goal].type === 'Warmup') {
+                    let title = document.createElement('ul');
+                    let description = document.createElement('li');
+                    let time = document.createElement('li');
+
+                    title.classList.add('practice-title');
+                    description.classList.add('practice-list-item');
+                    time.classList.add('practice-list-item');
+
+                    title.textContent = dailyGoals[goal].title;
+                    description.textContent = `Notes: ${dailyGoals[goal].description}`;
+                    time.textContent = `Time: ${dailyGoals[goal].time} minutes`;
+
+                    warmupList.append(title);
+                    title.append(description);
+                    title.append(time);
+                };
+            };
+
+        });
+    });
 
 });
 

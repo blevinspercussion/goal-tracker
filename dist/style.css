@@ -109,3 +109,13 @@ select {
     margin: 15px;
     font-size: 25px;
 }
+
+.practice-title {
+    margin-bottom: 30px;
+}
+
+.practice-list-item {
+    font-style: italic;
+    margin-left: 35px;
+    font-size: 25px;
+}
