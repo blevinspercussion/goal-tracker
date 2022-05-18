@@ -12,6 +12,7 @@
     grid-template-rows: 250px 5fr;
     background-color: var(--main-bg-color);
     color: var(--main-text-color);
+    height: 100vh;
 }
 
 .header {
@@ -118,4 +119,8 @@ select {
     font-style: italic;
     margin-left: 35px;
     font-size: 25px;
+}
+
+.goal-card {
+    border: 1px solid #c3073f;
 }
