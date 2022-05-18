@@ -49,8 +49,8 @@ const displayController = (() => {
     };
 
     const displayPracticeSidebar = () => {
-
-    };
+        // TODO
+        };
 
     const drawGoalCard = () => {
         // TODO
@@ -76,6 +76,7 @@ const displayController = (() => {
 const formController = (() => {
     const displayAddPracticeForm = () => {
         const addPracticeForm = document.createElement('form');
+        addPracticeForm.setAttribute('onsubmit', 'return false'); // Prevents page from reloading when form submitted
         const sidebarRight = document.createElement('div');
 
         const headingFieldLabel = document.createElement('label');
@@ -86,6 +87,8 @@ const formController = (() => {
         const descriptionField = document.createElement('input');
         const timeField = document.createElement('input');
 
+        const submitBtn = document.createElement('button');
+
         const practiceFormInstructions = document.createElement('p');
 
         practiceFormInstructions.textContent = "This is where you can add items to, or remove items from, your daily practice routine. Under 'heading' you should put what type of practice the item is (i.e. warmup, technique, repertoire, etc.). Under 'description', you can be more specific about what to practice for that section. Finally, under 'time' you should put the time, in minutes, that you are expected to spend on that practice section."
@@ -93,6 +96,7 @@ const formController = (() => {
         headingFieldLabel.textContent ='Heading';
         descriptionFieldLabel.textContent = 'Description';
         timeFieldLabel.textContent = 'Time';
+        submitBtn.textContent = 'Add to Practice';
 
         timeField.setAttribute('type', 'number');
         sidebarRight.classList.add('sidebar-right');
@@ -106,8 +110,16 @@ const formController = (() => {
         addPracticeForm.appendChild(descriptionField);
         addPracticeForm.appendChild(timeFieldLabel);
         addPracticeForm.appendChild(timeField);
+        addPracticeForm.appendChild(submitBtn);
 
         mainContentDiv.appendChild(practiceFormInstructions);
+
+        submitBtn.addEventListener('click', () => {
+            let practice = dailyPractice(headingField.value, descriptionField.value, timeField.value);
+            dailyPracticeGoals.push(practice);
+            console.log(practice);
+            console.log(dailyPracticeGoals);
+        });
 
 
     };
