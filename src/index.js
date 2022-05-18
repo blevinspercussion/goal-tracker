@@ -40,6 +40,10 @@ const displayController = (() => {
 
     // Hilights current tab while un-hilighting other tabs
     const hiLightTab = (currentTab) => {
+        if (!currentTab){
+            document.querySelector('.tab-hilight').remove('tab-hilight');
+            return;
+        };
         if (document.querySelector('.tab-hilight')) {
             document.querySelector('.tab-hilight').classList.remove('tab-hilight');
         };
@@ -152,6 +156,7 @@ longTermGoalsTab.addEventListener('click', () => {
 
 updatePracticeButton.addEventListener('click', () => {
     displayController.clearMainContent();
+    displayController.hiLightTab('none');
 
 });
 
