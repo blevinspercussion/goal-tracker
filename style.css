@@ -6,6 +6,10 @@
     --button-color: #4e4e50;
 }
 
+li {
+    list-style: none;
+}
+
 body {
     background-color: var(--main-bg-color);
     color: var(--main-text-color);
@@ -148,6 +152,9 @@ select {
 }
 
 .goal-card {
+    margin-top: 25px;
+    margin-right: 500px;
+    padding: 25px;    
     border: 1px solid #c3073f;
 }
 
