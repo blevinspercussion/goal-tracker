@@ -18,6 +18,19 @@ let longTermGoals = [];
 const date = new Date();
 
 
+// Goal factory functions 
+
+const dailyPractice = (heading, description, time) => {
+    return { heading, description, time };
+};
+
+const shortTermGoal = (title, description, dueDate) => {
+    return { title, description, dueDate };
+};
+
+const longTermGoal = (title, description) => {
+    return { title, description };
+};
 
 // Display controller handles adding elements to, and removing 
 // elements from, the DOM
@@ -33,6 +46,7 @@ const displayController = (() => {
             sidebarDiv.removeChild(sidebarDiv.firstChild);
         };
     };
+ 
 
     const drawGoalCard = () => {
         // TODO
@@ -53,6 +67,7 @@ const displayController = (() => {
     return {clearMainContent, clearSidebar, drawGoalCard, hiLightTab};
 
 })();
+
 
 ///////////////////////////////////
 ////// Event Listeners for Tabs ///
@@ -157,6 +172,8 @@ longTermGoalsTab.addEventListener('click', () => {
 updatePracticeButton.addEventListener('click', () => {
     displayController.clearMainContent();
     displayController.hiLightTab('none');
+
+
 
 });
 
