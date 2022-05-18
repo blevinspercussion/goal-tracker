@@ -6,6 +6,11 @@
     --button-color: #4e4e50;
 }
 
+body {
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+}
+
 .content {
     display: grid;
     grid-template-columns: 250px 5fr;
@@ -42,6 +47,19 @@
     font-size: medium;
 }
 
+.tab-hilight {
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-left: 1px solid var(--hilight-color);
+    border-right: 1px solid var(--hilight-color);
+    border-top: 1px solid var(--hilight-color);
+    font-size: medium;
+    background-color: rgba(162, 162, 162, 0.2);
+    box-shadow: 2px 2px 5px lightgray;
+}
+
 .tab:hover {
     cursor: pointer;
 }
@@ -53,6 +71,8 @@
 }
 
 .sidebar {
+    display: flex;
+    flex-direction: column;
     grid-column: 1 / 2;
     grid-row: 2 / 3;
     border-top: 2px solid var(--hilight-color);
@@ -81,7 +101,7 @@
 }
 
 button {
-    height: 50px;
+    height: 75px;
     font-size: 25px;
     margin: 35px;
     border-radius: 10px;
@@ -123,4 +143,9 @@ select {
 
 .goal-card {
     border: 1px solid #c3073f;
+}
+
+.practice-greeting {
+    font-size: 40px;
+    margin: 15px;
 }
