@@ -17,8 +17,9 @@ let longTermGoals = [];
 
 const date = new Date();
 
-
-// Goal factory functions 
+//////////////////////////////
+// Goal factory functions ////
+//////////////////////////////
 
 const dailyPractice = (heading, description, time) => {
     return { heading, description, time };
@@ -60,14 +61,46 @@ const displayController = (() => {
         };
         if (document.querySelector('.tab-hilight')) {
             document.querySelector('.tab-hilight').classList.remove('tab-hilight');
+            currentTab.classList.add('tab-hilight');
         };
-        currentTab.classList.add('tab-hilight');
     }
 
     return {clearMainContent, clearSidebar, drawGoalCard, hiLightTab};
 
 })();
 
+
+const formController = (() => {
+    const displayAddPracticeForm = () => {
+        const addPracticeForm = document.createElement('form');
+
+        const headingFieldLabel = document.createElement('label');
+        const descriptionFieldLabel = document.createElement('label');
+        const timeFieldLabel = document.createElement('label');
+
+        const headingField = document.createElement('input');
+        const descriptionField = document.createElement('input');
+        const timeField = document.createElement('input');
+
+        headingFieldLabel.textContent ='Heading';
+        descriptionFieldLabel.textContent = 'Description';
+        timeFieldLabel.textContent = 'Time';
+
+        timeField.setAttribute('type', 'number');
+
+        mainContentDiv.appendChild(addPracticeForm);
+        addPracticeForm.appendChild(headingFieldLabel);
+        addPracticeForm.appendChild(headingField);
+        addPracticeForm.appendChild(descriptionFieldLabel);
+        addPracticeForm.appendChild(descriptionField);
+        addPracticeForm.appendChild(timeFieldLabel);
+        addPracticeForm.appendChild(timeField);
+
+
+    };
+
+    return { displayAddPracticeForm };
+})();
 
 ///////////////////////////////////
 ////// Event Listeners for Tabs ///
@@ -172,6 +205,10 @@ longTermGoalsTab.addEventListener('click', () => {
 updatePracticeButton.addEventListener('click', () => {
     displayController.clearMainContent();
     displayController.hiLightTab('none');
+
+    formController.displayAddPracticeForm();
+
+    // Displays the 'update practice form'
 
 
 
