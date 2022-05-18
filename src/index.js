@@ -46,11 +46,32 @@ const displayController = (() => {
         while (sidebarDiv.firstChild) {
             sidebarDiv.removeChild(sidebarDiv.firstChild);
         };
+
     };
 
-    const displayPracticeSidebar = () => {
+    const displayPracticeSidebar = (div) => {
         // TODO
+        // const dailyGoalsDiv = document.createElement('div')
+        for (let goal in dailyPracticeGoals) {
+            let goalCard = document.createElement('div');
+            let goalHeading = document.createElement('h1');
+            let goalList = document.createElement('ul');
+            let goalDescription = document.createElement('li')
+            let goalTime = document.createElement('li');
+
+            goalCard.classList.add('goal-card');
+
+            goalHeading.textContent = `${dailyPracticeGoals[goal].heading}`;
+            goalDescription.textContent = `${dailyPracticeGoals[goal].description}`;
+            goalTime.textContent = `${dailyPracticeGoals[goal].time} minutes`;
+
+            div.appendChild(goalCard);
+            goalCard.appendChild(goalHeading);
+            goalCard.appendChild(goalDescription);
+            goalCard.appendChild(goalTime);
+
         };
+    };
 
     const drawGoalCard = () => {
         // TODO
@@ -68,7 +89,7 @@ const displayController = (() => {
         };
     }
 
-    return {clearMainContent, clearSidebar, drawGoalCard, hiLightTab};
+    return {clearMainContent, clearSidebar, drawGoalCard, hiLightTab, displayPracticeSidebar};
 
 })();
 
@@ -119,6 +140,7 @@ const formController = (() => {
             dailyPracticeGoals.push(practice);
             console.log(practice);
             console.log(dailyPracticeGoals);
+            displayController.displayPracticeSidebar(sidebarRight);
         });
 
 
