@@ -65,6 +65,8 @@ body {
 }
 
 .main-content {
+    display: grid;
+    grid-template-columns: 1fr, 1fr;
     grid-column: 2 / 3;
     grid-row: 2 / 3;
     margin-left: 50px;
@@ -77,6 +79,10 @@ body {
     grid-row: 2 / 3;
     border-top: 2px solid var(--hilight-color);
     border-right: 2px solid var(--hilight-color);
+}
+
+.sidebar-right {
+    grid-column: 2 / 3;
 }
 
 .welcome {

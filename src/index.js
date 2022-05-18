@@ -47,7 +47,10 @@ const displayController = (() => {
             sidebarDiv.removeChild(sidebarDiv.firstChild);
         };
     };
- 
+
+    const displayPracticeSidebar = () => {
+
+    };
 
     const drawGoalCard = () => {
         // TODO
@@ -73,6 +76,7 @@ const displayController = (() => {
 const formController = (() => {
     const displayAddPracticeForm = () => {
         const addPracticeForm = document.createElement('form');
+        const sidebarRight = document.createElement('div');
 
         const headingFieldLabel = document.createElement('label');
         const descriptionFieldLabel = document.createElement('label');
@@ -91,8 +95,11 @@ const formController = (() => {
         timeFieldLabel.textContent = 'Time';
 
         timeField.setAttribute('type', 'number');
+        sidebarRight.classList.add('sidebar-right');
+
 
         mainContentDiv.appendChild(addPracticeForm);
+        mainContentDiv.appendChild(sidebarRight);
         addPracticeForm.appendChild(headingFieldLabel);
         addPracticeForm.appendChild(headingField);
         addPracticeForm.appendChild(descriptionFieldLabel);
