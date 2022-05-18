@@ -49,6 +49,12 @@ const displayController = (() => {
 
     };
 
+    const clearDiv = (div) => {
+        while (div.firstChild) {
+            div.removeChild(div.firstChild);
+        }
+    };
+
     const displayPracticeSidebar = (div) => {
         // TODO
         // const dailyGoalsDiv = document.createElement('div')
@@ -89,7 +95,7 @@ const displayController = (() => {
         };
     }
 
-    return {clearMainContent, clearSidebar, drawGoalCard, hiLightTab, displayPracticeSidebar};
+    return {clearMainContent, clearSidebar, drawGoalCard, hiLightTab, displayPracticeSidebar, clearDiv};
 
 })();
 
@@ -138,8 +144,6 @@ const formController = (() => {
         submitBtn.addEventListener('click', () => {
             let practice = dailyPractice(headingField.value, descriptionField.value, timeField.value);
             dailyPracticeGoals.push(practice);
-            console.log(practice);
-            console.log(dailyPracticeGoals);
             displayController.displayPracticeSidebar(sidebarRight);
         });
 
