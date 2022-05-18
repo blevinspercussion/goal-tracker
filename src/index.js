@@ -82,6 +82,10 @@ const formController = (() => {
         const descriptionField = document.createElement('input');
         const timeField = document.createElement('input');
 
+        const practiceFormInstructions = document.createElement('p');
+
+        practiceFormInstructions.textContent = "This is where you can add items to, or remove items from, your daily practice routine. Under 'heading' you should put what type of practice the item is (i.e. warmup, technique, repertoire, etc.). Under 'description', you can be more specific about what to practice for that section. Finally, under 'time' you should put the time, in minutes, that you are expected to spend on that practice section."
+
         headingFieldLabel.textContent ='Heading';
         descriptionFieldLabel.textContent = 'Description';
         timeFieldLabel.textContent = 'Time';
@@ -95,6 +99,8 @@ const formController = (() => {
         addPracticeForm.appendChild(descriptionField);
         addPracticeForm.appendChild(timeFieldLabel);
         addPracticeForm.appendChild(timeField);
+
+        mainContentDiv.appendChild(practiceFormInstructions);
 
 
     };
