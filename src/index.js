@@ -84,18 +84,23 @@ const displayController = (() => {
     };
 
     // Hilights current tab while un-hilighting other tabs
-    const hiLightTab = (currentTab) => {
-        if (!currentTab){
-            document.querySelector('.tab-hilight').remove('tab-hilight');
-            return;
-        };
-        if (document.querySelector('.tab-hilight')) {
-            document.querySelector('.tab-hilight').classList.remove('tab-hilight');
-            currentTab.classList.add('tab-hilight');
-        };
-    }
+    // const hiLightTab = (currentTab) => {
+    //     if (!currentTab){
+    //         console.log('!')
+    //         document.querySelector('.tab-hilight').remove('tab-hilight');
+    //         return;
+    //     };
+    //     if (document.querySelector('.tab-hilight')) {
+    //         console.log('working');
+    //         document.querySelector('.tab-hilight').classList.remove('tab-hilight');
+    //         currentTab.classList.add('tab-hilight');
+    //     };
+    //     currentTab.classList.add('tab-hilight');
+    //     document.querySelector('.tab-hilight').classList.remove('tab-hilight');
+    //     currentTab.classList.add('tab-hilight');
+    // }
 
-    return {clearMainContent, clearSidebar, drawGoalCard, hiLightTab, displayPracticeSidebar, clearDiv};
+    return {clearMainContent, clearSidebar, drawGoalCard, displayPracticeSidebar, clearDiv};
 
 })();
 
@@ -226,7 +231,9 @@ dailyPracticeTab.addEventListener('click', () => {
             break;
     };
     displayController.clearMainContent();
-    displayController.hiLightTab(dailyPracticeTab);
+    dailyPracticeTab.classList.add('tab-hilight');
+    shortTermGoalsTab.classList.remove('tab-hilight');
+    longTermGoalsTab.classList.remove('tab-hilight');
 
     const practiceGreeting = document.createElement('div')
     
@@ -241,12 +248,16 @@ dailyPracticeTab.addEventListener('click', () => {
 
 shortTermGoalsTab.addEventListener('click', () => {
     displayController.clearMainContent();
-    displayController.hiLightTab(shortTermGoalsTab);
+    shortTermGoalsTab.classList.add('tab-hilight');
+    dailyPracticeTab.classList.remove('tab-hilight');
+    longTermGoalsTab.classList.remove('tab-hilight');
 });
 
 longTermGoalsTab.addEventListener('click', () => {
     displayController.clearMainContent();
-    displayController.hiLightTab(longTermGoalsTab);
+    longTermGoalsTab.classList.add('tab-hilight');
+    shortTermGoalsTab.classList.remove('tab-hilight');
+    dailyPracticeTab.classList.remove('tab-hilight');
 });
 
 //////////////////////////////////////
@@ -254,14 +265,12 @@ longTermGoalsTab.addEventListener('click', () => {
 //////////////////////////////////////
 
 updatePracticeButton.addEventListener('click', () => {
+    dailyPracticeTab.classList.remove('tab-hilight');
+    shortTermGoalsTab.classList.remove('tab-hilight');
+    longTermGoalsTab.classList.remove('tab-hilight');
     displayController.clearMainContent();
-    displayController.hiLightTab('none');
 
     formController.displayAddPracticeForm();
-
-    // Displays the 'update practice form'
-
-
 
 });
 
