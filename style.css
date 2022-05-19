@@ -168,7 +168,27 @@ select {
     height: fit-content;
 }
 
+.ls-goal-card {
+    margin-top: 25px;
+    margin-right: 50px;
+    padding: 25px;
+    border: 1px solid #c3073f;
+    border-radius: 10px;
+    background-color: #232323;
+    width: fit-content;
+    height: fit-content;
+    
+}
+
 .practice-greeting {
     font-size: 40px;
     margin: 15px;
+}
+
+.goals-div {
+    display: flex;
+    flex: 1 1 auto;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
 }
