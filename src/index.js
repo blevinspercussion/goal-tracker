@@ -61,9 +61,8 @@ const displayController = (() => {
         }
     };
 
-    const displayPracticeSidebar = (div) => {
-        // TODO
-        // const dailyGoalsDiv = document.createElement('div')
+
+    const displayDailyPracticeCards = (div) => {
         for (let goal in dailyPracticeGoals) {
             let goalCard = document.createElement('div');
             let goalHeading = document.createElement('h1');
@@ -85,28 +84,13 @@ const displayController = (() => {
         };
     };
 
-    const drawGoalCard = () => {
-        // TODO
-    };
+    // const displayPracticeSession = () => {
+    //     for (let goal in dailyPracticeGoals) {
 
-    // Hilights current tab while un-hilighting other tabs
-    // const hiLightTab = (currentTab) => {
-    //     if (!currentTab){
-    //         console.log('!')
-    //         document.querySelector('.tab-hilight').remove('tab-hilight');
-    //         return;
-    //     };
-    //     if (document.querySelector('.tab-hilight')) {
-    //         console.log('working');
-    //         document.querySelector('.tab-hilight').classList.remove('tab-hilight');
-    //         currentTab.classList.add('tab-hilight');
-    //     };
-    //     currentTab.classList.add('tab-hilight');
-    //     document.querySelector('.tab-hilight').classList.remove('tab-hilight');
-    //     currentTab.classList.add('tab-hilight');
-    // }
+    //     }
+    // };
 
-    return {clearMainContent, clearSidebar, drawGoalCard, displayPracticeSidebar, clearDiv, clearSidebarRight};
+    return {clearMainContent, clearSidebar, displayDailyPracticeCards, clearDiv, clearSidebarRight};
 
 })();
 
@@ -159,13 +143,16 @@ const formController = (() => {
             displayController.clearDiv(sidebarRight);
             let practice = dailyPractice(headingField.value, descriptionField.value, timeField.value);
             dailyPracticeGoals.push(practice);
-            displayController.displayPracticeSidebar(sidebarRight);
+            displayController.displayDailyPracticeCards(sidebarRight);
         });
 
         resetPracticeBtn.addEventListener('click', () => {
             displayController.clearDiv(sidebarRight);
             dailyPracticeGoals = [];
         });
+
+        displayController.displayDailyPracticeCards(sidebarRight);
+
 
     };
 
@@ -257,6 +244,8 @@ dailyPracticeTab.addEventListener('click', () => {
 
     mainContentDiv.appendChild(practiceGreeting);
 
+    displayController.displayDailyPracticeCards(mainContentDiv);
+
 
 });
 
@@ -265,6 +254,8 @@ shortTermGoalsTab.addEventListener('click', () => {
     shortTermGoalsTab.classList.add('tab-hilight');
     dailyPracticeTab.classList.remove('tab-hilight');
     longTermGoalsTab.classList.remove('tab-hilight');
+
+    
 });
 
 longTermGoalsTab.addEventListener('click', () => {
@@ -283,9 +274,9 @@ updatePracticeButton.addEventListener('click', () => {
     shortTermGoalsTab.classList.remove('tab-hilight');
     longTermGoalsTab.classList.remove('tab-hilight');
     displayController.clearMainContent();
-
+    
     formController.displayAddPracticeForm();
-
+    
 });
 
 

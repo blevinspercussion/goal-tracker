@@ -163,6 +163,7 @@ select {
     border: 1px solid #c3073f;
     border-radius: 10px;
     background-color: #232323;
+    width: 250px;
 }
 
 .practice-greeting {
