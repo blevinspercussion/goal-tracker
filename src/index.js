@@ -83,11 +83,15 @@ const displayController = (() => {
     };
 
     const displayGoalCards = (type) => {
+        let goalsDiv = document.createElement('div');
         let goalsHeading = document.createElement('h1');
         let goalsToDisplay = [];
 
         goalsHeading.textContent = `${type} Term Goals`;
         mainContentDiv.appendChild(goalsHeading);
+        mainContentDiv.appendChild(goalsDiv);
+
+        goalsDiv.classList.add('goals-div');
 
         if (type === 'short') {
             for (let item in shortTermGoals) {
@@ -106,13 +110,13 @@ const displayController = (() => {
             let goalTitle = document.createElement('p');
             let goalDueDate = document.createElement('p');
 
-            goalCard.classList.add('goal-card');
+            goalCard.classList.add('ls-goal-card');
 
             // goalType.textContent = `${goalsToDisplay[goal].type}`;
             goalTitle.textContent = `${goalsToDisplay[goal].title}`;
             goalDueDate.textContent = `${goalsToDisplay[goal].dueDate}`;
 
-            mainContentDiv.appendChild(goalCard);
+            goalsDiv.appendChild(goalCard);
             goalCard.appendChild(goalTitle);
             goalCard.appendChild(goalDueDate);
 
