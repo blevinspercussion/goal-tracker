@@ -25,13 +25,11 @@ const dailyPractice = (heading, description, time) => {
     return { heading, description, time };
 };
 
-const shortTermGoal = (title, description, dueDate) => {
-    return { title, description, dueDate };
+const goal = (type, title, dueDate) => {
+    return { type, title, dueDate };
 };
 
-const longTermGoal = (title, description) => {
-    return { title, description };
-};
+
 
 // Display controller handles adding elements to, and removing 
 // elements from, the DOM
@@ -99,7 +97,7 @@ const formController = (() => {
     const displayAddPracticeForm = () => {
         const addPracticeForm = document.createElement('form');
         addPracticeForm.setAttribute('onsubmit', 'return false'); // Prevents page from reloading when form submitted
-        const sidebarRight = document.createElement('div');
+        let sidebarRight = document.createElement('div');
 
         const headingFieldLabel = document.createElement('label');
         const descriptionFieldLabel = document.createElement('label');
@@ -156,7 +154,67 @@ const formController = (() => {
 
     };
 
-    return { displayAddPracticeForm };
+    const displayAddGoalForm = () => {
+        const addGoalForm = document.createElement('form');
+        addGoalForm.setAttribute('onsubmit', 'return false'); // Prevents page from reloading on form submit
+        let sidebarRight = document.createElement('div')
+
+        const typeFieldLabel = document.createElement('label');
+        const titleFieldLabel = document.createElement('label');
+        const dueFieldLabel = document.createElement('label');
+
+        const typeField = document.createElement('select');
+        const optionShort = document.createElement('option');
+        const optionLong = document.createElement('option');
+        const titleField = document.createElement('input');
+        const dueField = document.createElement('input');
+
+        const submitBtn = document.createElement('button');
+
+        const goalFormInstructions = document.createElement('p');
+
+        goalFormInstructions.textContent = "*This form is for adding your long term and short term goals. Short term goals are goals that you should plan on completing in a matter of weeks or months. Short term goals should be directly supported by your daily practice routine. Long term goals are more significant achievements that may take many months or even years to complete.";
+
+        typeFieldLabel.textContent = "Goal Type";
+        titleFieldLabel.textContent = "Goal";
+        dueFieldLabel.textContent = "Due Date (optional)";
+        submitBtn.textContent = "Submit Goal";
+        optionLong.textContent = "Long Term";
+        optionShort.textContent = "Short Term";
+
+        optionShort.setAttribute('value', 'short');
+        optionLong.setAttribute('value', 'long');
+
+        dueField.setAttribute('type', 'date');
+        sidebarRight.classList.add('sidebar-right');
+
+        mainContentDiv.appendChild(addGoalForm);
+        mainContentDiv.appendChild(sidebarRight);
+        addGoalForm.appendChild(typeFieldLabel);
+        addGoalForm.appendChild(typeField);
+        typeField.appendChild(optionShort);
+        typeField.appendChild(optionLong);
+        addGoalForm.appendChild(titleFieldLabel);
+        addGoalForm.appendChild(titleField);
+        addGoalForm.appendChild(dueFieldLabel);
+        addGoalForm.appendChild(dueField);
+        addGoalForm.appendChild(submitBtn);
+        addGoalForm.appendChild(goalFormInstructions);
+
+        submitBtn.addEventListener('click', () => {
+            displayController.clearDiv(sidebarRight);
+            let newGoal = goal(typeField.value, titleField.value, dueField.value);
+            if (newGoal.type === 'short') {
+                shortTermGoals.push(newGoal);
+            } else {
+                longTermGoals.push(newGoal);
+            };
+            console.log(shortTermGoals);
+            console.log(longTermGoals);
+        });
+    };
+
+    return { displayAddPracticeForm, displayAddGoalForm };
 })();
 
 ///////////////////////////////////
@@ -255,6 +313,7 @@ shortTermGoalsTab.addEventListener('click', () => {
     dailyPracticeTab.classList.remove('tab-hilight');
     longTermGoalsTab.classList.remove('tab-hilight');
 
+
     
 });
 
@@ -282,5 +341,7 @@ updatePracticeButton.addEventListener('click', () => {
 
 addGoalButton.addEventListener('click', () => { 
     displayController.clearMainContent();
+
+    formController.displayAddGoalForm();
 
 });
