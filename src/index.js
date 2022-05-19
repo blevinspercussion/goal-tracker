@@ -126,6 +126,7 @@ const formController = (() => {
         const timeField = document.createElement('input');
 
         const submitBtn = document.createElement('button');
+        const resetPracticeBtn = document.createElement('button');
 
         const practiceFormInstructions = document.createElement('p');
 
@@ -135,6 +136,7 @@ const formController = (() => {
         descriptionFieldLabel.textContent = 'Description';
         timeFieldLabel.textContent = 'Time';
         submitBtn.textContent = 'Add to Practice';
+        resetPracticeBtn.textContent = 'Reset Practice Routine';
 
         timeField.setAttribute('type', 'number');
         sidebarRight.classList.add('sidebar-right');
@@ -149,8 +151,9 @@ const formController = (() => {
         addPracticeForm.appendChild(timeFieldLabel);
         addPracticeForm.appendChild(timeField);
         addPracticeForm.appendChild(submitBtn);
+        addPracticeForm.appendChild(resetPracticeBtn);
+        addPracticeForm.appendChild(practiceFormInstructions);
 
-        mainContentDiv.appendChild(practiceFormInstructions);
 
         submitBtn.addEventListener('click', () => {
             displayController.clearDiv(sidebarRight);
@@ -159,6 +162,10 @@ const formController = (() => {
             displayController.displayPracticeSidebar(sidebarRight);
         });
 
+        resetPracticeBtn.addEventListener('click', () => {
+            displayController.clearDiv(sidebarRight);
+            dailyPracticeGoals = [];
+        });
 
     };
 

@@ -161,6 +161,8 @@ select {
     margin-right: 500px;
     padding: 25px;    
     border: 1px solid #c3073f;
+    border-radius: 10px;
+    background-color: #232323;
 }
 
 .practice-greeting {
