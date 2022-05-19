@@ -49,6 +49,12 @@ const displayController = (() => {
 
     };
 
+    const clearSidebarRight = () => {
+        while (sidebarRight.firstChild) {
+            sidebarRight.removeChild(sidebarRight.firstChild);
+        };
+    };
+
     const clearDiv = (div) => {
         while (div.firstChild) {
             div.removeChild(div.firstChild);
@@ -100,7 +106,7 @@ const displayController = (() => {
     //     currentTab.classList.add('tab-hilight');
     // }
 
-    return {clearMainContent, clearSidebar, drawGoalCard, displayPracticeSidebar, clearDiv};
+    return {clearMainContent, clearSidebar, drawGoalCard, displayPracticeSidebar, clearDiv, clearSidebarRight};
 
 })();
 
@@ -123,7 +129,7 @@ const formController = (() => {
 
         const practiceFormInstructions = document.createElement('p');
 
-        practiceFormInstructions.textContent = "This is where you can add items to, or remove items from, your daily practice routine. Under 'heading' you should put what type of practice the item is (i.e. warmup, technique, repertoire, etc.). Under 'description', you can be more specific about what to practice for that section. Finally, under 'time' you should put the time, in minutes, that you are expected to spend on that practice section."
+        practiceFormInstructions.textContent = "*This is where you can add items to, or remove items from, your daily practice routine. Under 'heading' you should put what type of practice the item is (i.e. warmup, technique, repertoire, etc.). Under 'description', you can be more specific about what to practice for that section. Finally, under 'time' you should put the time, in minutes, that you are expected to spend on that practice section."
 
         headingFieldLabel.textContent ='Heading';
         descriptionFieldLabel.textContent = 'Description';
@@ -147,6 +153,7 @@ const formController = (() => {
         mainContentDiv.appendChild(practiceFormInstructions);
 
         submitBtn.addEventListener('click', () => {
+            displayController.clearDiv(sidebarRight);
             let practice = dailyPractice(headingField.value, descriptionField.value, timeField.value);
             dailyPracticeGoals.push(practice);
             displayController.displayPracticeSidebar(sidebarRight);
