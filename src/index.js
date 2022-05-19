@@ -383,6 +383,9 @@ updatePracticeButton.addEventListener('click', () => {
 
 
 addGoalButton.addEventListener('click', () => { 
+    dailyPracticeTab.classList.remove('tab-hilight');
+    shortTermGoalsTab.classList.remove('tab-hilight');
+    longTermGoalsTab.classList.remove('tab-hilight');
     displayController.clearMainContent();
 
     formController.displayAddGoalForm();
