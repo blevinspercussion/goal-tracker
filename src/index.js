@@ -82,13 +82,51 @@ const displayController = (() => {
         };
     };
 
+    const displayGoalCards = (type) => {
+        let goalsHeading = document.createElement('h1');
+        let goalsToDisplay = [];
+
+        goalsHeading.textContent = `${type} Term Goals`;
+        mainContentDiv.appendChild(goalsHeading);
+
+        if (type === 'short') {
+            for (let item in shortTermGoals) {
+                goalsToDisplay.push(shortTermGoals[item]);
+            };
+        } else {
+            for (let item in longTermGoals) {
+                goalsToDisplay.push(longTermGoals[item]);
+            };
+        };
+        console.log(goalsToDisplay);
+        for (let goal in goalsToDisplay) {
+
+            let goalCard = document.createElement('div');
+            // let goalType = document.createElement('h1');
+            let goalTitle = document.createElement('p');
+            let goalDueDate = document.createElement('p');
+
+            goalCard.classList.add('goal-card');
+
+            // goalType.textContent = `${goalsToDisplay[goal].type}`;
+            goalTitle.textContent = `${goalsToDisplay[goal].title}`;
+            goalDueDate.textContent = `${goalsToDisplay[goal].dueDate}`;
+
+            mainContentDiv.appendChild(goalCard);
+            goalCard.appendChild(goalTitle);
+            goalCard.appendChild(goalDueDate);
+
+        };
+
+    };
+
     // const displayPracticeSession = () => {
     //     for (let goal in dailyPracticeGoals) {
 
     //     }
     // };
 
-    return {clearMainContent, clearSidebar, displayDailyPracticeCards, clearDiv, clearSidebarRight};
+    return {clearMainContent, clearSidebar, displayDailyPracticeCards, clearDiv, clearSidebarRight, displayGoalCards};
 
 })();
 
@@ -209,8 +247,7 @@ const formController = (() => {
             } else {
                 longTermGoals.push(newGoal);
             };
-            console.log(shortTermGoals);
-            console.log(longTermGoals);
+
         });
     };
 
@@ -313,7 +350,7 @@ shortTermGoalsTab.addEventListener('click', () => {
     dailyPracticeTab.classList.remove('tab-hilight');
     longTermGoalsTab.classList.remove('tab-hilight');
 
-
+    displayController.displayGoalCards('short');
     
 });
 
@@ -322,6 +359,8 @@ longTermGoalsTab.addEventListener('click', () => {
     longTermGoalsTab.classList.add('tab-hilight');
     shortTermGoalsTab.classList.remove('tab-hilight');
     dailyPracticeTab.classList.remove('tab-hilight');
+
+    displayController.displayGoalCards('long');
 });
 
 //////////////////////////////////////

@@ -71,6 +71,7 @@ body {
 .main-content {
     display: grid;
     grid-template-columns: 1fr, 1fr;
+    grid-template-rows: fit-content(100px);
     grid-column: 2 / 3;
     grid-row: 2 / 3;
     margin-left: 50px;
@@ -163,7 +164,8 @@ select {
     border: 1px solid #c3073f;
     border-radius: 10px;
     background-color: #232323;
-    width: 250px;
+    width: fit-content;
+    height: fit-content;
 }
 
 .practice-greeting {
