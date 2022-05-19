@@ -15,7 +15,10 @@ let dailyPracticeGoals = [];
 let shortTermGoals = [];
 let longTermGoals = [];
 
+
 const date = new Date();
+
+
 
 //////////////////////////////
 // Goal factory functions ////
@@ -29,6 +32,36 @@ const goal = (type, title, dueDate) => {
     return { type, title, dueDate };
 };
 
+// Local Storage Handler 
+const localStorageHandler = (() => {
+
+    const storeDailyPractice = (data) => {
+        localStorage.setItem('dailyPracticeGoals', data);
+    };
+
+    const storeShortTermGoal = (data) => {
+        localStorage.setItem('shortTermGoals', data);
+    };
+
+    const storeLongTermGoal = (data) => {
+        localStorage.setItem('longTermGoals', data);
+    };
+
+    const getLocalData = (data) => {
+        dailyPracticeGoals = localStorage.getItem(data);
+        shortTermGoals = localStorage.getItem('shortTermGoals');
+        longTermGoals = localStorage.getItem('longTermGoals');
+    };
+
+    return { storeDailyPractice, storeShortTermGoal, storeLongTermGoal, getLocalData };
+
+})();
+
+if (!localStorage.getItem('dailyPracticeGoals')) {
+    console.log('working');
+    localStorageHandler.getLocalData('dailyPracticeGoals');
+    console.log(dailyPracticeGoals);
+}
 
 
 // Display controller handles adding elements to, and removing 
@@ -184,6 +217,7 @@ const formController = (() => {
             let practice = dailyPractice(headingField.value, descriptionField.value, timeField.value);
             dailyPracticeGoals.push(practice);
             displayController.displayDailyPracticeCards(sidebarRight);
+            // localStorage.setItem('dailyPracticeGoals', dailyPracticeGoals);
         });
 
         resetPracticeBtn.addEventListener('click', () => {
@@ -192,6 +226,8 @@ const formController = (() => {
         });
 
         displayController.displayDailyPracticeCards(sidebarRight);
+
+        localStorage.setItem('dailyPracticeGoals', dailyPracticeGoals);
 
 
     };
