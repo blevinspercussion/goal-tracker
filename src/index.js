@@ -92,6 +92,34 @@ const displayController = (() => {
         }
     };
 
+    const displayDailyPracticeGoals = (div) => {
+        for (let goal in dailyPracticeGoals) {
+            let goalCard = document.createElement('div');
+            let goalHeading = document.createElement('h1');
+            let goalList = document.createElement('ul');
+            let goalDescription = document.createElement('li')
+            let goalTime = document.createElement('li');
+            let trashIcon = document.createElement('img');
+
+
+            goalCard.classList.add('goal');
+            trashIcon.classList.add('icon');
+
+            trashIcon.setAttribute('src', './img/big-trash-can-svgrepo-com.svg')
+            trashIcon.setAttribute('alt', 'trash icon');
+
+            goalHeading.textContent = `${dailyPracticeGoals[goal].heading}`;
+            goalDescription.textContent = `${dailyPracticeGoals[goal].description}`;
+            goalTime.textContent = `${dailyPracticeGoals[goal].time} minutes`;
+
+            div.appendChild(goalCard);
+            goalCard.appendChild(trashIcon);
+            goalCard.appendChild(goalHeading);
+            goalCard.appendChild(goalDescription);
+            goalCard.appendChild(goalTime);
+        };
+    };
+
 
     const displayDailyPracticeCards = (div) => {
         for (let goal in dailyPracticeGoals) {
@@ -173,7 +201,7 @@ const displayController = (() => {
     //     }
     // };
 
-    return {clearMainContent, clearSidebar, displayDailyPracticeCards, clearDiv, clearSidebarRight, displayGoalCards};
+    return {clearMainContent, clearSidebar, displayDailyPracticeCards, clearDiv, clearSidebarRight, displayGoalCards, displayDailyPracticeGoals};
 
 })();
 
@@ -227,7 +255,7 @@ const formController = (() => {
             let practice = dailyPractice(headingField.value, descriptionField.value, timeField.value);
             console.log(practice);
             dailyPracticeGoals.push(practice);
-            displayController.displayDailyPracticeCards(sidebarRight);
+            displayController.displayDailyPracticeGoals(sidebarRight);
             // localStorage.setItem('dailyPracticeGoals', dailyPracticeGoals);
         });
 
@@ -236,7 +264,7 @@ const formController = (() => {
             dailyPracticeGoals = [];
         });
 
-        displayController.displayDailyPracticeCards(sidebarRight);
+        displayController.displayDailyPracticeGoals(sidebarRight);
 
         localStorage.setItem('dailyPracticeGoals', dailyPracticeGoals);
         console.log(dailyPracticeGoals);
