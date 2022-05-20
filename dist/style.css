@@ -192,3 +192,14 @@ select {
     align-items: flex-start;
     justify-content: center;
 }
+
+.daily-goal-completed {
+    margin-top: 25px;
+    margin-right: 500px;
+    padding: 25px;    
+    border: 1px solid #c3073f;
+    border-radius: 10px;
+    background-color: rgb(0, 58, 29);
+    width: fit-content;
+    height: fit-content;
+}
