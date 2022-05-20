@@ -57,11 +57,6 @@ const localStorageHandler = (() => {
 
 })();
 
-// if (!localStorage.getItem('dailyPracticeGoals')) {
-//     console.log('working');
-//     localStorageHandler.getLocalData('dailyPracticeGoals');
-//     console.log(dailyPracticeGoals);
-// }
 
 
 // Display controller handles adding elements to, and removing 
@@ -120,7 +115,6 @@ const displayController = (() => {
 
             trashIcon.addEventListener('click', () => {
                 dailyPracticeGoals.splice(goal, 1);
-                console.log(dailyPracticeGoals);
                 displayController.clearDiv(document.querySelector('.sidebar-right'));
                 displayDailyPracticeGoals(document.querySelector('.sidebar-right'));
             });
@@ -180,17 +174,14 @@ const displayController = (() => {
                 goalsToDisplay.push(longTermGoals[item]);
             };
         };
-        console.log(goalsToDisplay);
         for (let goal in goalsToDisplay) {
 
             let goalCard = document.createElement('div');
-            // let goalType = document.createElement('h1');
             let goalTitle = document.createElement('p');
             let goalDueDate = document.createElement('p');
 
             goalCard.classList.add('ls-goal-card');
 
-            // goalType.textContent = `${goalsToDisplay[goal].type}`;
             goalTitle.textContent = `${goalsToDisplay[goal].title}`;
             goalDueDate.textContent = `${goalsToDisplay[goal].dueDate}`;
 
@@ -201,12 +192,6 @@ const displayController = (() => {
         };
 
     };
-
-    // const displayPracticeSession = () => {
-    //     for (let goal in dailyPracticeGoals) {
-
-    //     }
-    // };
 
     return {clearMainContent, clearSidebar, displayDailyPracticeCards, clearDiv, clearSidebarRight, displayGoalCards, displayDailyPracticeGoals};
 
@@ -260,7 +245,6 @@ const formController = (() => {
         submitBtn.addEventListener('click', () => {
             displayController.clearDiv(sidebarRight);
             let practice = dailyPractice(headingField.value, descriptionField.value, timeField.value);
-            console.log(practice);
             dailyPracticeGoals.push(practice);
             displayController.displayDailyPracticeGoals(sidebarRight);
             // localStorage.setItem('dailyPracticeGoals', dailyPracticeGoals);
@@ -274,7 +258,6 @@ const formController = (() => {
         displayController.displayDailyPracticeGoals(sidebarRight);
 
         localStorage.setItem('dailyPracticeGoals', dailyPracticeGoals);
-        console.log(dailyPracticeGoals);
 
 
     };
