@@ -117,6 +117,14 @@ const displayController = (() => {
             goalCard.appendChild(goalHeading);
             goalCard.appendChild(goalDescription);
             goalCard.appendChild(goalTime);
+
+            trashIcon.addEventListener('click', () => {
+                console.log('working');
+                dailyPracticeGoals.splice(dailyPracticeGoals[goal], 1);
+                console.log(dailyPracticeGoals);
+                displayController.clearDiv(document.querySelector('.sidebar-right'));
+                displayDailyPracticeGoals(document.querySelector('.sidebar-right'));
+            });
         };
     };
 
