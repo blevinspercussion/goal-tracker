@@ -202,6 +202,7 @@ select {
     background-color: #3f3f7a;
     width: fit-content;
     height: fit-content;
+    transition: 1s;
 }
 
 .goal {
