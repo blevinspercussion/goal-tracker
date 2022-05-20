@@ -119,8 +119,7 @@ const displayController = (() => {
             goalCard.appendChild(goalTime);
 
             trashIcon.addEventListener('click', () => {
-                console.log('working');
-                dailyPracticeGoals.splice(dailyPracticeGoals[goal], 1);
+                dailyPracticeGoals.splice(goal, 1);
                 console.log(dailyPracticeGoals);
                 displayController.clearDiv(document.querySelector('.sidebar-right'));
                 displayDailyPracticeGoals(document.querySelector('.sidebar-right'));
