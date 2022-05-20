@@ -179,15 +179,31 @@ const displayController = (() => {
             let goalCard = document.createElement('div');
             let goalTitle = document.createElement('p');
             let goalDueDate = document.createElement('p');
+            let completeBtn = document.createElement('button');
 
             goalCard.classList.add('ls-goal-card');
 
             goalTitle.textContent = `${goalsToDisplay[goal].title}`;
             goalDueDate.textContent = `${goalsToDisplay[goal].dueDate}`;
+            completeBtn.textContent = 'Goal Completed';
 
             goalsDiv.appendChild(goalCard);
             goalCard.appendChild(goalTitle);
             goalCard.appendChild(goalDueDate);
+            goalCard.appendChild(completeBtn);
+
+            completeBtn.addEventListener('click', () => {
+                if (goal.type === 'short') {
+                    shortTermGoals.splice(goal, 1);
+                    displayController.clearMainContent();
+                    displayController.displayGoalCards('short');
+                } else {
+                    longTermGoals.splice(goal, 1);
+                    displayController.clearMainContent();
+                    displayController.displayGoalCards('short');
+                };
+                
+            });
 
         };
 
